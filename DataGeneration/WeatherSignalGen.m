@@ -11,7 +11,7 @@ function [z,Sz] = WeatherSignalGen(factorN,M,vm,var_v,P,CSR,var_c,SNR,fc,PRI,onl
 %--------------------------------------------------------------------------
 %  Inputs:
 %   factorN: Ratio between the actual number of samples and the number of samples that is used
-%      to simulate the analog signal. 
+%      to simulate the analog signal. This emulate the effect of windowing
 %   M: Number of samples
 %   vm: Mean radial velocity of the weather measurable from the radar [m/s]
 %   var_v: Spectral width of the weather [m/s] 
