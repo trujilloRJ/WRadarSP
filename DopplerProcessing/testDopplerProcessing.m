@@ -40,13 +40,13 @@ vN = (-N/2:N/2 - 1)*vs/N;
 onlyW = 0; time = 1;
 
 for k = 1:K;
-    [z(k,:),Sz] =  WeatherSignalGen(factorN,M,vm,var_v,Sp,CSR,var_c,SNR,fc,PRI,onlyW,time);
+    [zW1(k,:),Sz] =  WeatherSignalGen(factorN,M,vm,var_v,Sp,CSR,var_c,SNR,fc,PRI,onlyW,time);
 end
-z1 = reshape(z,1,M*K);
+zW = reshape(zW1,1,M*K);
 
-Sr = WelchSpectraEstimation(z1,K,'RECTANGULAR');
-Sh = WelchSpectraEstimation(z1,K,'HAMMING');
-Sb = WelchSpectraEstimation(z1,K,'BLACKMAN');
+Sr = WelchSpectraEstimation(zW,K,'RECTANGULAR');
+Sh = WelchSpectraEstimation(zW,K,'HAMMING');
+Sb = WelchSpectraEstimation(zW,K,'BLACKMAN');
 
 figure;
 plot(vN,10*log10(fftshift(Sz)));
@@ -57,17 +57,32 @@ xlabel('Doppler velocity[m/s]')
 ylabel('Spectral Density[dB]')
 legend('Theoretical Spectre','Spectre estimated using rectangular window','Spectre estimated using hamming window','Spectre estimated using blackman window')
 
+%% NoiseLevelDetermination test
 
-%% Pulse Pair Processing test.
+[N0r,THMr,kr] = NoiseLevelDetermination(Sr,N,K);
+[N0h,THMh,kh] = NoiseLevelDetermination(Sh,N,K);
+[N0b,THMb,kb] = NoiseLevelDetermination(Sb,N,K);
+
+figure;
+plot(v,10*log10(fftshift(Sr)),v,10*log10(fftshift(Sh)),v,10*log10(fftshift(Sb)));
+hold on;
+plot(v,10*log10(N0r)*ones(1,M),'--',v,10*log10(N0h)*ones(1,M),'--',v,10*log10(N0b)*ones(1,M),'--');
+title('Noise Level Determination')
+xlabel('Doppler velocity[m/s]')
+ylabel('Spectral Density[dB]')
+legend('Spectre estimated using rectangular window','Spectre estimated using hamming window','Spectre estimated using blackman window','Noise Level rectangular','Noise Level hamming','Noise Level blackman')
+
+
+%% PulsePairProcessing test.
 
 onlyW = 2; time = 1;
 
 for k = 1:K;
     [z(k,:),Sz] =  WeatherSignalGen(factorN,M,vm,var_v,Sp,CSR,var_c,SNR,fc,PRI,onlyW,time);
 end
-z1 = reshape(z,1,M*K);
+zPPP = reshape(z,1,M*K);
 
-S = WelchSpectraEstimation(z1,K,'RECTANGULAR');
+S = WelchSpectraEstimation(zPPP,K,'RECTANGULAR');
 
 figure;
 plot(vN,10*log10(fftshift(Sz)));
