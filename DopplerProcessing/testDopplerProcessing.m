@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description:
 %   This script provides an example of the Doppler Processing techniques
-%   that are performed by the functions on this folder. Data generation is
-%   described in the data generation folder.
+%   that are performed by the functions on this folder. Data generation function
+%   is located at inside the data generation folder.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc; clear; close all;
 
