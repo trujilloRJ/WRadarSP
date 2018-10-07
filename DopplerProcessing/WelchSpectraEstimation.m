@@ -33,7 +33,7 @@ end
 U = (1/L)*sum(w.^2);
 
 if (K == 1)
-    X_fseg = fft(x.*w');  
+    X_fseg = fft(x.'.*w);  
     Pf = ((1/(L*U)*abs(X_fseg).^2))';
 else
     x_seg = reshape(x,K,L);
