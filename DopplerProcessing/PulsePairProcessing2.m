@@ -21,7 +21,7 @@ function [P,vm,std_v,error] = PulsePairProcessing2(Swn,N0,z,R,M,PRI,lambda,time)
 %   time: 0 - spectral moments will be estimated using the spectre (Swn)
 %         1 - spectral moments will be estimated using sampled signal in
 %         time domain (z)
-%         2 - spectral moments will be estimated using sutocorrelation
+%         2 - spectral moments will be estimated using autocorrelation
 %         matrix (R)
 %
 % Outputs:
