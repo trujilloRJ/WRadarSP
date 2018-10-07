@@ -6,11 +6,11 @@ function [P,vm,std_v,error] = PulsePairProcessing2(Swn,N0,z,R,M,PRI,lambda,time)
 %--------------------------------------------------------------------------
 % Description:
 %   This function estimate the first three spectral moments of a weather
-%   signal using the method described in the reference. Signal spectre MUST
+%   signal using the method described in the reference. Signal spectrum MUST
 %   be symmetric.
 %--------------------------------------------------------------------------
 % Inputs:
-%   Swn: signal power spectre. It MUST be symmetric (only noise and one weather peak)
+%   Swn: signal power spectrum. It MUST be symmetric (only noise and one weather peak)
 %        no fftshift.
 %   N0: signal noise level
 %   z: sampled signal in time domain
@@ -18,7 +18,7 @@ function [P,vm,std_v,error] = PulsePairProcessing2(Swn,N0,z,R,M,PRI,lambda,time)
 %   M: number of samples
 %   PRI: pulse repetition interval (sample time in a range bin)
 %   lambda: wavelenght of the carrier
-%   time: 0 - spectral moments will be estimated using the spectre (Swn)
+%   time: 0 - spectral moments will be estimated using the spectrum (Swn)
 %         1 - spectral moments will be estimated using sampled signal in
 %         time domain (z)
 %         2 - spectral moments will be estimated using autocorrelation
