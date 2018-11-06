@@ -88,6 +88,8 @@ xlabel('Doppler velocity[m/s]');
 ylabel('Spectral Density[dB]');
 legend('Original spectrum','Weather gaussian','Spectrum with recovered weather samples')
 
+% The ANSWER shows in the first column the theoretical moments, in the second one the moments estimated without recovering weather samples
+% and in the third column the moments estimated after recovering the wetaher samples.
 ANSWER = [ Sp P_est0 P_est; vm vm_est0 vm_est; var_v std_v_est0 std_v_est]
 
 
